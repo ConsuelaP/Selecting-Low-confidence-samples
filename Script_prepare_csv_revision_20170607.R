@@ -18,6 +18,8 @@ library(foreign)
 ##############################     SETUP YOUR DATA 
 #######################################################################
 
+#test
+
 ## Set your working directory
 setwd("A:/WORK/WORKFOLDER/Goldmining update 2015/QAQC/QAQC_Ass")
 
