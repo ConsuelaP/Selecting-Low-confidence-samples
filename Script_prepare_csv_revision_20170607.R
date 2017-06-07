@@ -44,17 +44,23 @@ write.csv(out2,paste("ce_input/revise_lo_20170607.csv",sep=""),row.names=F)
 
 ## Subsetting the original input file with criterias from the preliminary results (omissions and commissions)
 out <- pts_ce_input[
-  pts_ce_input$ID %in% pts_ce_ouput[
+  pts_ce_input$id %in% pts_ce_ouput[
     (
-      (pts_ce_ouput$map_class  == "DEFOR_00_09" & pts_ce_ouput$confidence == "hi") 
+      (pts_ce_ouput$map_class  == "Buffer" & pts_ce_ouput$confidence == "lo") 
       & 
-      (pts_ce_ouput$ref_class  %in% c("FOREST","HYDRO","NON_FOREST"))
+      (pts_ce_ouput$ref_class  %in% c("GMS2014"))
       )
     | 
       (
-        (pts_ce_ouput$map_class  == "DEFOR_09_15" & pts_ce_ouput$confidence == "hi") 
+        (pts_ce_ouput$map_class  == "GMS2014" & pts_ce_ouput$confidence == "lo") 
         & 
-          (pts_ce_ouput$ref_class  %in% c("FOREST","HYDRO","NON_FOREST"))
+          (pts_ce_ouput$ref_class  %in% c("Buffer"))
+      )
+    | 
+      (
+        (pts_ce_ouput$map_class  == "GMS2014_2015" & pts_ce_ouput$confidence == "lo") 
+        & 
+          (pts_ce_ouput$ref_class  %in% c("Buffer","GMS2014"))
       )
     ,
     ]$id,
@@ -63,5 +69,5 @@ out <- pts_ce_input[
 (check <- pts_ce_ouput[pts_ce_ouput$id %in% out$ID,c("id","map_class","ref_class")])
 
 ## Export as csv file
-write.csv(out,paste("results_20161222/revise_overest_20161223.csv",sep=""),row.names=F)
+write.csv(out,paste("ce_input/revise_lo_20170607_comm_omm.csv",sep=""),row.names=F)
 
