@@ -23,6 +23,8 @@ library(foreign)
 
 #test2
 
+#IK BEN MOE
+
 ## Set your working directory
 setwd("A:/WORK/WORKFOLDER/Goldmining update 2015/QAQC/QAQC_Ass")
 
