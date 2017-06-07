@@ -18,12 +18,6 @@ library(foreign)
 ##############################     SETUP YOUR DATA 
 #######################################################################
 
-#test
-
-
-#test2
-
-#IK BEN MOE
 
 ## Set your working directory
 setwd("A:/WORK/WORKFOLDER/Goldmining update 2015/QAQC/QAQC_Ass")
@@ -37,16 +31,9 @@ pts_ce_input <- read.csv("data/sae_design_GMS_2014_2015_Buffer_merge_diss_single
 names(pts_ce_ouput)
 
 ## Subsetting the low confidence with agreement for revision
-out2 <- pts_ce_input[
-  pts_ce_input$ID %in% pts_ce_ouput[
-    (pts_ce_ouput$confidence == "lo") 
-    & 
-      (pts_ce_ouput$ref_class == pts_ce_ouput$map_class)
-    ,
-    ]$id,
-  ]
+out2 <- pts_ce_input[pts_ce_input$id %in% pts_ce_ouput[(pts_ce_ouput$confidence == "lo") & (pts_ce_ouput$ref_class == pts_ce_ouput$map_class),]$id,]
 
-check2 <- pts_ce_ouput[pts_ce_ouput$id %in% out2$ID,c("id","map_class","ref_class","operator")]
+check2 <- pts_ce_ouput[pts_ce_ouput$id %in% out2$id,c("id","map_class","ref_class","operator")]
 
 table(check2$operator,check2$map_class)
 
